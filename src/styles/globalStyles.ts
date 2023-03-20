@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     font-family: var(--font-main);
-    background: var(--color-background-main);
+    background: var(--color-second);
   }
 `
 
