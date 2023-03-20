@@ -4,8 +4,10 @@ import GlobalStyle from './styles/globalStyles';
 import App from './components/App';
 
 
-const body: HTMLBodyElement | null = document.querySelector('body')
-body && createRoot(body).render(
+const root = document.createElement('div')
+document.querySelector('body')?.append(root)
+
+createRoot(root).render(
   <StrictMode>
     <GlobalStyle />
     <App />
