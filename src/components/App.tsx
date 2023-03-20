@@ -1,12 +1,9 @@
 import styled from 'styled-components';
+import Header from './Header';
 
-
-const Header = styled.h1`
-  color: var(--color-text-main);
-`
 
 const App = (): JSX.Element => (
-  <Header>Book Search App</Header>
+  <Header />
 )
 
 
