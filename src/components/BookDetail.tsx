@@ -65,7 +65,7 @@ const Description = styled.div`
   }
 
   & > b {
-    font-weight: 600;
+    font-weight: 700;
   }
 `
 
@@ -120,11 +120,11 @@ const PageDetail = (): JSX.Element => {
 
           <AboutBook>
             <TextGroup>
-              <Text fontSize='32px'>{book.volumeInfo.title}</Text>
+              <Text fontSize='32px' fontWeight={700}>{book.volumeInfo.title}</Text>
             </TextGroup>
 
             <TextGroup>
-              <Text fontSize='16px' fontWeight={600}>
+              <Text fontSize='16px' fontWeight={700}>
                 {'Authors: '}
               </Text>
               <Text fontSize='16px'>
@@ -133,7 +133,7 @@ const PageDetail = (): JSX.Element => {
             </TextGroup>
 
             <TextGroup>
-              <Text fontSize='16px' fontWeight={600}>
+              <Text fontSize='16px' fontWeight={700}>
                 {'Categories: '}
               </Text>
               <Text fontSize='16px'>
@@ -142,7 +142,7 @@ const PageDetail = (): JSX.Element => {
             </TextGroup>
 
             <TextGroup>
-              <Text fontSize='16px' fontWeight={600}>
+              <Text fontSize='16px' fontWeight={700}>
                 {'Description: '}
               </Text>
               <Description
