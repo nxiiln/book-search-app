@@ -24,12 +24,13 @@ const SearchStatus = styled.div`
 
 const Page = styled.section`
   width: 250px;
-  height: 350px;
+  height: 380px;
   margin: 0 10px 40px 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 210px 80px 50px 1fr;
+  justify-items: center;
+  align-items: start;
   background: var(--color-fade);
   cursor: pointer;
   transition: all ease-out 0.2s;
@@ -39,10 +40,15 @@ const Page = styled.section`
   }
 `
 
+const BookImage = styled.img`
+  width: 128px;
+  max-height: 192px;
+`
+
 const LoadMoreGroup = styled.div`
   width: 100%;
-  height: 60px;
-  margin: 20px 0 60px 0;
+  height: 70px;
+  margin: 20px 0 100px 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -111,14 +117,14 @@ const Main = (): JSX.Element => {
             key={book.id}
             onClick={(): void => navigate(`/${book.id}`)}
           >
-            <img src={URL_IMG_BASE + book.id + IMG_ZOOM} />
+            <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM} />
 
-            <Text textAlign='center'>
-              {book.volumeInfo.title}
+            <Text fontWeight={700} textAlign='center'>
+              {book.volumeInfo.title.substring(0, 86)}
             </Text>
 
             <Text fontSize='14px' textAlign='center'>
-              {book.volumeInfo.authors?.join(', ')}
+              {book.volumeInfo.authors?.join(', ').substring(0, 61)}
             </Text>
 
             <Text fontSize='12px'>
