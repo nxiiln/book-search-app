@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
+import booksReducer from './slices/books'
+import queryReducer from './slices/query'
 
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
+    books: booksReducer,
+    query: queryReducer,
   },
 })
 
