@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { MAX_RESULTS } from '../constants'
+import { TStateQuery } from '../types/TStateQuery'
 
-
-type TStateQuery = {
-  startIndex: number,
-  baseQuery: string,
-}
 
 const initialState: TStateQuery = {
   startIndex: MAX_RESULTS,

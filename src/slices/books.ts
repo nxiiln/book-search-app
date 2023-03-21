@@ -1,19 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { TStateBooks } from '../types/TStateBooks'
 
-
-type TStateBooks = {
-  totalItems: number,
-  items: {
-    id: string,
-    volumeInfo: {
-      title: string,
-      authors?: string[],
-      description?: string,
-      categories?: string[],
-    }
-  }[],
-  loadingStatus: string,
-}
 
 const initialState: TStateBooks = {
   totalItems: 0,
@@ -26,7 +13,7 @@ const initialState: TStateBooks = {
       categories: [],
     }
   }],
-  loadingStatus: '',
+  loadingStatus: 'ok',
 }
 
 
