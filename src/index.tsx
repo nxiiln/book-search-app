@@ -4,6 +4,7 @@ import { store } from './store';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import GlobalStyle from './styles/globalStyles';
+import { FontsImporter } from './styles/fonts';
 import App from './components/App';
 
 
@@ -18,5 +19,6 @@ createRoot(root).render(
       </Provider>
     </HashRouter>
     <GlobalStyle />
+    <FontsImporter />
   </StrictMode>
 )
