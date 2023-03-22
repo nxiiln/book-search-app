@@ -1,6 +1,8 @@
+import { useAppDispatch } from '../utils/redux-hooks'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Text from './Text'
+import { setScrollY } from '../slices/scrollY'
 import { TBook } from '../types/TBook'
 import { URL_IMG_BASE, IMG_ZOOM, ZOOM_SMALL } from '../utils/constants'
 
@@ -26,21 +28,26 @@ const BookPreviewWrapper = styled.section`
 const BookImage = styled.img`
   width: 128px;
   max-height: 192px;
+  filter: brightness(0.9);
+  user-select: none;
 `
 
 
 const BookPreview = ({book}: {book: TBook}): JSX.Element => {
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
+  const handleClick = (): void => {
+    dispatch(setScrollY(window.scrollY))
+    navigate(`/${book.id}`)
+  }
+
   return (
-    <BookPreviewWrapper
-      key={book.id}
-      onClick={(): void => navigate(`/${book.id}`)}
-    >
+    <BookPreviewWrapper onClick={handleClick}>
       <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM + ZOOM_SMALL} />
 
       <Text fontWeight={700} textAlign='center'>
-        {book.volumeInfo.title.substring(0, 86)}
+        {book.volumeInfo.title.substring(0, 73)}
       </Text>
 
       <Text fontSize='14px' textAlign='center'>
