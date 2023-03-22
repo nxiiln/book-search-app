@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { MAX_RESULTS } from '../constants'
+import { MAX_RESULTS } from '../utils/constants'
 import { TStateQuery } from '../types/TStateQuery'
 
 

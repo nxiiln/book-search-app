@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAppDispatch } from '../redux-hooks'
+import { useAppDispatch } from '../utils/redux-hooks'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Title from './Title'
@@ -9,7 +9,7 @@ import Text from './Text'
 import Select from './Select'
 import { clearState, fetchBooks } from '../slices/books'
 import { setBaseQuery } from '../slices/query'
-import { CATEGORIES, SORTING, URL_BASE, MAX_RESULTS } from '../constants'
+import { CATEGORIES, SORTING, URL_BASE, MAX_RESULTS } from '../utils/constants'
 
 
 const HeaderWrapperOuter = styled.header`
