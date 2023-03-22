@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
   }
 
   *::selection {
@@ -27,11 +28,6 @@ const GlobalStyle = createGlobalStyle`
 
     &::-webkit-scrollbar-thumb {
       background: var(--color-fade);
-    }
-
-    img {
-      filter: brightness(0.9);
-      user-select: none;
     }
   }
 `
