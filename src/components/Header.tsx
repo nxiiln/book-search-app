@@ -29,13 +29,11 @@ const HeaderWrapperInner = styled.div`
 
 const Form = styled.form`
   width: 100%;
-  /* height: 80px; */
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: space-between;
-  /* border: 1px solid orange; */
 `
 
 const Selects = styled.div`
@@ -59,8 +57,6 @@ const SelectGroup = styled.div`
   justify-content: space-between;
   align-items: center;
 `
-
-
 
 
 const Header = (): JSX.Element => {
@@ -100,6 +96,7 @@ const Header = (): JSX.Element => {
       <option key={id} value={option}>{option}</option>
     ))
   )
+
 
   return (
     <HeaderWrapperOuter>
