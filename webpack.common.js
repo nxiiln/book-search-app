@@ -28,7 +28,6 @@ module.exports = {
 
   module: {
     rules: [
-      //TypeScript
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
@@ -36,18 +35,6 @@ module.exports = {
           getCustomTransformers: () => ({ before: [styledComponentsTransformer] }),
         },
         exclude: /node_modules/,
-      },
-
-      // Images
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
-
-      // Fonts
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
       },
     ],
   },
