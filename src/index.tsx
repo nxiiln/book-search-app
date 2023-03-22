@@ -3,7 +3,7 @@ import { StrictMode } from 'react'
 import { store } from './store'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
-import GlobalStyle from './styles/globalStyles'
+import GlobalStyle from './styles/GlobalStyle'
 import { FontsImporter } from './styles/fonts'
 import App from './components/App'
 
