@@ -5,7 +5,14 @@ import Button from './Button'
 import Text from './Text'
 import { setStartIndex } from '../slices/query'
 import { fetchBooks } from '../slices/books'
-import { URL_IMG_BASE, IMG_ZOOM, MAX_RESULTS } from '../utils/constants'
+import {
+  MAX_RESULTS,
+  URL_IMG_BASE,
+  IMG_ZOOM,
+  ZOOM_SMALL,
+  MESSAGE_LOADING,
+  MESSAGE_ERROR
+} from '../utils/constants'
 
 
 const MainWrapper = styled.main`
@@ -73,7 +80,7 @@ const Main = (): JSX.Element => {
 
   const renderLoadMoreGroup = (): JSX.Element => {
     if (totalItems > 0 && loadingStatus === 'loading') {
-      return <Text>Loading... 🚀</Text>
+      return <Text>{MESSAGE_LOADING}</Text>
     }
 
     if (totalItems > 0 && loadingStatus === 'error') {
@@ -82,7 +89,7 @@ const Main = (): JSX.Element => {
           <Button width='150px' onClick={handleLoadMore}>
             Load more 📚
           </Button>
-          <Text>Something went wrong 🛸</Text>
+          <Text>{MESSAGE_ERROR}</Text>
         </>
       )
     }
@@ -104,8 +111,8 @@ const Main = (): JSX.Element => {
       <SearchStatus>
         <Text>
           {
-            totalItems === 0 && loadingStatus === 'loading' ? 'Loading... 🚀' :
-            totalItems === 0 && loadingStatus === 'error' ? 'Something went wrong 🛸' :
+            totalItems === 0 && loadingStatus === 'loading' ? MESSAGE_LOADING :
+            totalItems === 0 && loadingStatus === 'error' ? MESSAGE_ERROR :
             totalItems > 0 ? `Found ${totalItems} books` : false
           }
         </Text>
@@ -117,7 +124,7 @@ const Main = (): JSX.Element => {
             key={book.id}
             onClick={(): void => navigate(`/${book.id}`)}
           >
-            <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM} />
+            <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM + ZOOM_SMALL} />
 
             <Text fontWeight={700} textAlign='center'>
               {book.volumeInfo.title.substring(0, 86)}

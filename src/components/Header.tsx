@@ -9,7 +9,7 @@ import Text from './Text'
 import Select from './Select'
 import { clearState, fetchBooks } from '../slices/books'
 import { setBaseQuery } from '../slices/query'
-import { CATEGORIES, SORTING, URL_BASE, MAX_RESULTS } from '../utils/constants'
+import { CATEGORIES, SORTING, URL_BOOKS_BASE, MAX_RESULTS } from '../utils/constants'
 
 
 const HeaderWrapperOuter = styled.header`
@@ -73,7 +73,7 @@ const Header = (): JSX.Element => {
 
   const subject: string = category === 'all' ? '' : `+subject:${category}`
   const orderBy: string = `&orderBy=${sort}`
-  const baseQuery: string = URL_BASE + query + subject + orderBy
+  const baseQuery: string = URL_BOOKS_BASE + query + subject + orderBy
   const urlQuery: string = `${baseQuery}&startIndex=0&maxResults=${MAX_RESULTS}`
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {

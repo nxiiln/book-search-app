@@ -2,9 +2,17 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import Text from './Text'
-import { URL_BOOK_BASE, URL_IMG_BASE,IMG_ZOOM_BIG, BREAKPOINT_MEDIUM } from '../utils/constants'
 import { TLoadingStatus } from '../types/TLoadingStatus'
 import { TBook } from '../types/TBook'
+import {
+  URL_BOOK_BASE,
+  URL_IMG_BASE,
+  IMG_ZOOM,
+  ZOOM_BIG,
+  BREAKPOINT_MEDIUM,
+  MESSAGE_LOADING,
+  MESSAGE_ERROR,
+} from '../utils/constants'
 
 
 const PageDetailWrapper = styled.main`
@@ -98,14 +106,14 @@ const PageDetail = (): JSX.Element => {
     <PageDetailWrapper>
       <Text>
           {
-            loadingStatus === 'loading' ? 'Loading... 🚀' :
-            loadingStatus === 'error' ? 'Something went wrong 🛸' : ''
+            loadingStatus === 'loading' ? MESSAGE_LOADING :
+            loadingStatus === 'error' ? MESSAGE_ERROR : ''
           }
         </Text>
 
       {book && loadingStatus === 'ok' &&
         <>
-          <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM_BIG} />
+          <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM + ZOOM_BIG} />
 
           <AboutBook>
             <TextGroup>
