@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Header from './Header'
-import Main from './Main'
+import BookList from './BookList'
 import BookDetail from './BookDetail'
 
 
@@ -8,7 +8,7 @@ const App = (): JSX.Element => (
   <>
     <Header />
     <Routes>
-      <Route path='/' element={<Main />} />
+      <Route path='/' element={<BookList />} />
       <Route path='/:id' element={<BookDetail />} />
     </Routes>
   </>
