@@ -1,9 +1,11 @@
 {
   "name": "book-search-app",
-  "version": "1.0.0",
+  "homepage": "https://nxiiln.github.io/book-search-app",
   "scripts": {
     "start": "webpack serve --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
@@ -18,6 +20,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/styled-components": "^5.1.26",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.0",
