@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAppDispatch } from '../redux-hooks';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Title from './Title';
 import Input from './Input';
@@ -52,6 +53,7 @@ const Header = (): JSX.Element => {
   const [category, setCategory] = useState<string>('all')
   const [sort, setSort] = useState<string>('relevance')
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const subject: string = category === 'all' ? '' : `+subject:${category}`
   const orderBy: string = `&orderBy=${sort}`
@@ -60,9 +62,12 @@ const Header = (): JSX.Element => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
-    dispatch(clearState())
-    dispatch(setBaseQuery(baseQuery))
-    query && dispatch(fetchBooks(urlQuery))
+    if (query) {
+      dispatch(clearState())
+      dispatch(setBaseQuery(baseQuery))
+      dispatch(fetchBooks(urlQuery))
+      navigate('/')
+    }
   }
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>): void => {

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { URL_IMG_BASE, IMG_ZOOM, MAX_RESULTS } from '../constants'
 import { useAppDispatch, useAppSelector } from '../redux-hooks'
@@ -30,6 +31,12 @@ const Page = styled.section`
   justify-content: space-evenly;
   align-items: center;
   background: var(--color-fade);
+  cursor: pointer;
+  transition: all ease-out 0.2s;
+
+  &:hover {
+    transform: scale(1.07);
+  }
 `
 
 const LoadMoreGroup = styled.div`
@@ -47,6 +54,7 @@ const Main = (): JSX.Element => {
   const {items, totalItems, loadingStatus} = useAppSelector(state => state.books)
   const {startIndex, baseQuery} = useAppSelector(state => state.query)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const handleLoadMore = (): void => {
     dispatch(
@@ -68,7 +76,7 @@ const Main = (): JSX.Element => {
           <Button width='150px' onClick={handleLoadMore}>
             Load more 📚
           </Button>
-          <Text>Something went wrong 😿</Text>
+          <Text>Something went wrong 🛸</Text>
         </>
       )
     }
@@ -91,7 +99,7 @@ const Main = (): JSX.Element => {
         <Text>
           {
             totalItems === 0 && loadingStatus === 'loading' ? 'Loading... 🚀' :
-            totalItems === 0 && loadingStatus === 'error' ? 'Something went wrong 😿' :
+            totalItems === 0 && loadingStatus === 'error' ? 'Something went wrong 🛸' :
             totalItems > 0 ? `Found ${totalItems} books` : false
           }
         </Text>
@@ -99,7 +107,10 @@ const Main = (): JSX.Element => {
 
       {totalItems > 0 &&
         items.map((book): JSX.Element => (
-          <Page key={book.id}>
+          <Page
+            key={book.id}
+            onClick={(): void => navigate(`/${book.id}`)}
+          >
             <img src={URL_IMG_BASE + book.id + IMG_ZOOM} />
 
             <Text textAlign='center'>

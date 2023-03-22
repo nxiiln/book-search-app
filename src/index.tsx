@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
 import { store } from './store';
 import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
 import GlobalStyle from './styles/globalStyles';
 import App from './components/App';
 
@@ -11,9 +12,11 @@ document.querySelector('body')?.append(root)
 
 createRoot(root).render(
   <StrictMode>
+    <HashRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </HashRouter>
     <GlobalStyle />
-    <Provider store={store}>
-      <App />
-    </Provider>
   </StrictMode>
 )
