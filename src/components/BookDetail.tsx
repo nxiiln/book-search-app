@@ -15,7 +15,7 @@ import {
 } from '../utils/constants'
 
 
-const PageDetailWrapper = styled.main`
+const BookDetailWrapper = styled.main`
   width: 100%;
   margin: 20px 0 100px 0;
   display: flex;
@@ -80,12 +80,12 @@ const Description = styled.div`
 `
 
 
-const PageDetail = (): JSX.Element => {
+const BookDetail = (): JSX.Element => {
   const bookId = useParams().id
   const [book, setBook] = useState<TBook>();
   const [loadingStatus, setLoadingStatus] = useState<TLoadingStatus>('loading')
 
-  const getBook = async (): Promise<void> => {
+  const fetchBook = async (): Promise<void> => {
     try {
       setLoadingStatus('loading')
       const response: Response = await fetch(URL_BOOK_BASE + bookId);
@@ -99,17 +99,18 @@ const PageDetail = (): JSX.Element => {
   }
 
   useEffect((): void => {
-    getBook()
+    fetchBook()
   }, [bookId])
 
+
   return (
-    <PageDetailWrapper>
+    <BookDetailWrapper>
       <Text>
-          {
-            loadingStatus === 'loading' ? MESSAGE_LOADING :
-            loadingStatus === 'error' ? MESSAGE_ERROR : ''
-          }
-        </Text>
+        {
+          loadingStatus === 'loading' ? MESSAGE_LOADING :
+          loadingStatus === 'error' ? MESSAGE_ERROR : ''
+        }
+      </Text>
 
       {book && loadingStatus === 'ok' &&
         <>
@@ -151,9 +152,9 @@ const PageDetail = (): JSX.Element => {
           </AboutBook>
         </>
       }
-    </PageDetailWrapper>
+    </BookDetailWrapper>
   )
 }
 
 
-export default PageDetail
+export default BookDetail
