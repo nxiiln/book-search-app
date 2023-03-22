@@ -2,10 +2,9 @@ import { useState } from 'react'
 import { useAppDispatch } from '../utils/redux-hooks'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import Title from './Title'
+import Text from './Text'
 import Input from './Input'
 import Button from './Button'
-import Text from './Text'
 import Select from './Select'
 import { clearState, fetchBooks } from '../slices/books'
 import { setBaseQuery } from '../slices/query'
@@ -105,7 +104,10 @@ const Header = (): JSX.Element => {
   return (
     <HeaderWrapperOuter>
       <HeaderWrapperInner>
-        <Title>Search Book 📚</Title>
+        <Text as='h1' fontSize='36px' fontWeight={700}>
+          Search Book 📚
+        </Text>
+
         <Form onSubmit={handleSubmit}>
           <Input
             type='search'
