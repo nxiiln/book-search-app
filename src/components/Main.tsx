@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
-import { URL_IMG_BASE, IMG_ZOOM, MAX_RESULTS } from '../constants'
 import { useAppDispatch, useAppSelector } from '../redux-hooks'
-import { fetchBooks } from '../slices/books'
-import { setStartIndex } from '../slices/query'
+import styled from 'styled-components'
 import Button from './Button'
 import Text from './Text'
+import { setStartIndex } from '../slices/query'
+import { fetchBooks } from '../slices/books'
+import { URL_IMG_BASE, IMG_ZOOM, MAX_RESULTS } from '../constants'
 
 
 const MainWrapper = styled.main`

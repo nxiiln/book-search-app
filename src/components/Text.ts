@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+
 
 type TTextProps = {
   fontSize?: string,

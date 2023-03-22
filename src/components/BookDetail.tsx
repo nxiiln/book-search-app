@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import Text from './Text'
-import { URL_BOOK_BASE, IMG_ZOOM_BIG, URL_IMG_BASE, BREAKPOINT_MEDIUM } from '../constants'
+import { URL_BOOK_BASE, URL_IMG_BASE,IMG_ZOOM_BIG, BREAKPOINT_MEDIUM } from '../constants'
 import { TLoadingStatus } from '../types/TLoadingStatus'
 import { TBook } from '../types/TBook'
 

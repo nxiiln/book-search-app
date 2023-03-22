@@ -1,7 +1,7 @@
-import { Routes, Route } from 'react-router-dom';
-import Header from './Header';
-import Main from './Main';
-import BookDetail from './BookDetail';
+import { Routes, Route } from 'react-router-dom'
+import Header from './Header'
+import Main from './Main'
+import BookDetail from './BookDetail'
 
 
 const App = (): JSX.Element => (
