@@ -2,10 +2,20 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import Text from './Text'
-import { URL_BOOK_BASE, IMG_ZOOM_BIG, URL_IMG_BASE, BREAKPOINT_MEDIUM } from '../constants'
+import { TLoadingStatus } from '../types/TLoadingStatus'
+import { TBook } from '../types/TBook'
+import {
+  URL_BOOK_BASE,
+  URL_IMG_BASE,
+  IMG_ZOOM,
+  ZOOM_BIG,
+  BREAKPOINT_MEDIUM,
+  MESSAGE_LOADING,
+  MESSAGE_ERROR,
+} from '../utils/constants'
 
 
-const PageDetailWrapper = styled.main`
+const BookDetailWrapper = styled.main`
   width: 100%;
   margin: 20px 0 100px 0;
   display: flex;
@@ -70,25 +80,12 @@ const Description = styled.div`
 `
 
 
-type TBook = {
-  id: string,
-  volumeInfo: {
-    title: string,
-    authors?: string[],
-    description?: string,
-    categories?: string[],
-  }
-}
-
-type TLoadingStatus = 'loading' | 'ok' | 'error'
-
-
-const PageDetail = (): JSX.Element => {
+const BookDetail = (): JSX.Element => {
   const bookId = useParams().id
   const [book, setBook] = useState<TBook>();
   const [loadingStatus, setLoadingStatus] = useState<TLoadingStatus>('loading')
 
-  const getBook = async (): Promise<void> => {
+  const fetchBook = async (): Promise<void> => {
     try {
       setLoadingStatus('loading')
       const response: Response = await fetch(URL_BOOK_BASE + bookId);
@@ -102,21 +99,22 @@ const PageDetail = (): JSX.Element => {
   }
 
   useEffect((): void => {
-    getBook()
+    fetchBook()
   }, [bookId])
 
+
   return (
-    <PageDetailWrapper>
+    <BookDetailWrapper>
       <Text>
-          {
-            loadingStatus === 'loading' ? 'Loading... 🚀' :
-            loadingStatus === 'error' ? 'Something went wrong 🛸' : ''
-          }
-        </Text>
+        {
+          loadingStatus === 'loading' ? MESSAGE_LOADING :
+          loadingStatus === 'error' ? MESSAGE_ERROR : ''
+        }
+      </Text>
 
       {book && loadingStatus === 'ok' &&
         <>
-          <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM_BIG} />
+          <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM + ZOOM_BIG} />
 
           <AboutBook>
             <TextGroup>
@@ -154,9 +152,9 @@ const PageDetail = (): JSX.Element => {
           </AboutBook>
         </>
       }
-    </PageDetailWrapper>
+    </BookDetailWrapper>
   )
 }
 
 
-export default PageDetail
+export default BookDetail

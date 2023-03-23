@@ -1,4 +1,4 @@
-const colors: string = `
+export const colors: string = `
   html {
     --color-main: #ddd;
     --color-second: #222;
@@ -7,4 +7,3 @@ const colors: string = `
     --color-accent-second: #44a;
   }
 `
-export default colors

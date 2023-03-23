@@ -1,15 +1,14 @@
-import { useState } from 'react';
-import { useAppDispatch } from '../redux-hooks';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import Title from './Title';
-import Input from './Input';
-import Button from './Button';
-import Text from './Text';
-import Select from './Select';
-import { clearState, fetchBooks } from '../slices/books';
-import { setBaseQuery } from '../slices/query';
-import { CATEGORIES, SORTING, URL_BASE, MAX_RESULTS } from '../constants';
+import { useState } from 'react'
+import { useAppDispatch } from '../utils/redux-hooks'
+import { useNavigate } from 'react-router-dom'
+import styled from 'styled-components'
+import Text from './Text'
+import Input from './Input'
+import Button from './Button'
+import Select from './Select'
+import { clearState, fetchBooks } from '../slices/books'
+import { setBaseQuery } from '../slices/query'
+import { CATEGORIES, SORTING, URL_BOOKS_BASE, MAX_RESULTS } from '../utils/constants'
 
 
 const HeaderWrapperOuter = styled.header`
@@ -30,13 +29,11 @@ const HeaderWrapperInner = styled.div`
 
 const Form = styled.form`
   width: 100%;
-  /* height: 80px; */
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: space-between;
-  /* border: 1px solid orange; */
 `
 
 const Selects = styled.div`
@@ -62,8 +59,6 @@ const SelectGroup = styled.div`
 `
 
 
-
-
 const Header = (): JSX.Element => {
   const [query, setQuery] = useState<string>('')
   const [category, setCategory] = useState<string>('all')
@@ -73,7 +68,7 @@ const Header = (): JSX.Element => {
 
   const subject: string = category === 'all' ? '' : `+subject:${category}`
   const orderBy: string = `&orderBy=${sort}`
-  const baseQuery: string = URL_BASE + query + subject + orderBy
+  const baseQuery: string = URL_BOOKS_BASE + query + subject + orderBy
   const urlQuery: string = `${baseQuery}&startIndex=0&maxResults=${MAX_RESULTS}`
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -102,10 +97,14 @@ const Header = (): JSX.Element => {
     ))
   )
 
+
   return (
     <HeaderWrapperOuter>
       <HeaderWrapperInner>
-        <Title>Search Book 📚</Title>
+        <Text as='h1' fontSize='36px' fontWeight={700}>
+          Search Book 📚
+        </Text>
+
         <Form onSubmit={handleSubmit}>
           <Input
             type='search'

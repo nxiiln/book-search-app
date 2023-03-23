@@ -7,11 +7,8 @@ export const FontsImporter = styled.div`
   top: 0;
 `
 
-const fonts: string = `
+export const fonts: string = `
   html {
     --font-main: 'Nunito', 'Colibri', sans-serif;
   }
 `
-
-
-export default fonts
