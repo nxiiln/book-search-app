@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import Text from './Text'
+import Button from './Button'
 import { TLoadingStatus } from '../types/TLoadingStatus'
 import { TBook } from '../types/TBook'
 import {
@@ -33,6 +34,8 @@ const BookImage = styled.img`
   width: 90%;
   max-width: 500px;
   margin-bottom: 20px;
+  filter: brightness(0.9);
+  user-select: none;
 
   @media ${BREAKPOINT_MEDIUM} {
     width: 45%;
@@ -64,11 +67,15 @@ const TextGroup = styled.div`
 `
 
 const Description = styled.div`
-  margin-top: 5px;
+  margin: 5px 0 40px 0;
   font-family: var(--font-main);
   font-size: 16px;
   font-weight: 400;
   color: var(--color-main);
+
+  @media ${BREAKPOINT_MEDIUM} {
+    margin-bottom: 15px;
+  }
 
   & > p {
     margin: 0;
@@ -81,6 +88,7 @@ const Description = styled.div`
 
 
 const BookDetail = (): JSX.Element => {
+  const navigate = useNavigate()
   const bookId = useParams().id
   const [book, setBook] = useState<TBook>();
   const [loadingStatus, setLoadingStatus] = useState<TLoadingStatus>('loading')
@@ -149,6 +157,13 @@ const BookDetail = (): JSX.Element => {
                 }
               />
             </TextGroup>
+
+            <Button
+              aligSelf='center'
+              onClick={(): void => navigate('/')}
+            >
+              Close
+            </Button>
           </AboutBook>
         </>
       }

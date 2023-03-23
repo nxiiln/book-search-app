@@ -11,6 +11,7 @@ const Select = styled.select`
   border: none;
   cursor: pointer;
   outline: none;
+  user-select: none;
   transition: all ease-out 0.2s;
 
   &:hover, &:focus-visible {

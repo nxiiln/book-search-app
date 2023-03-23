@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../utils/redux-hooks'
 import styled from 'styled-components'
 import Text from './Text'
@@ -37,7 +38,12 @@ const LoadMoreGroup = styled.div`
 const BookList = (): JSX.Element => {
   const {items, totalItems, loadingStatus} = useAppSelector(state => state.books)
   const {startIndex, baseQuery} = useAppSelector(state => state.query)
+  const scrollY = useAppSelector(state => state.scrollY)
   const dispatch = useAppDispatch()
+
+  useEffect((): void => {
+    window.scroll({top: scrollY})
+  }, [])
 
   const handleLoadMore = (): void => {
     const urlQuery: string = `${baseQuery}&startIndex=${startIndex}&maxResults=${MAX_RESULTS}`
@@ -85,9 +91,9 @@ const BookList = (): JSX.Element => {
         </Text>
       </SearchStatus>
 
-      {totalItems > 0 &&
-        items.map((book: TBook): JSX.Element => <BookPreview book={book} />)
-      }
+      {totalItems > 0 && items.map((book: TBook, id: number): JSX.Element =>
+        <BookPreview key={id} book={book} />
+      )}
 
       <LoadMoreGroup>{renderLoadMoreGroup()}</LoadMoreGroup>
     </BookListWrapper>
