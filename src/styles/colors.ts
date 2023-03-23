@@ -1,6 +1,6 @@
 const colors: string = `
   html {
-    --color-main: #eee;
+    --color-main: #ddd;
     --color-second: #222;
     --color-fade: #444;
     --color-accent: #88e;

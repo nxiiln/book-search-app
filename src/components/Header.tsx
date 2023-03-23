@@ -14,32 +14,48 @@ import { CATEGORIES, SORTING, URL_BASE, MAX_RESULTS } from '../constants';
 
 const HeaderWrapperOuter = styled.header`
   width: 100%;
-  height: 200px;
+  margin: 20px 0 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 `
 
 const HeaderWrapperInner = styled.div`
-  height: 70%;
+  width: 90%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
 `
 
 const Form = styled.form`
   width: 100%;
-  height: 80px;
+  /* height: 80px; */
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   align-content: space-between;
+  /* border: 1px solid orange; */
+`
+
+const Selects = styled.div`
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (max-width: 540px) {
+    height: 70px;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const SelectGroup = styled.div`
-  width: 190px;
+  width: 185px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,21 +112,23 @@ const Header = (): JSX.Element => {
             value={query}
             onChange={handleChangeInput}
           />
-          <Button>Search 🔍</Button>
+          <Button margin='0 0 0 10px'>Search 🔍</Button>
 
-          <SelectGroup>
-            <Text>Categories</Text>
-            <Select value={category} onChange={handleChangeSelect(setCategory)}>
-              {fillSelect(CATEGORIES)}
-            </Select>
-          </SelectGroup>
+          <Selects>
+            <SelectGroup>
+              <Text>Categories</Text>
+              <Select value={category} onChange={handleChangeSelect(setCategory)}>
+                {fillSelect(CATEGORIES)}
+              </Select>
+            </SelectGroup>
 
-          <SelectGroup>
-            <Text>Sorting by</Text>
-            <Select value={sort} onChange={handleChangeSelect(setSort)}>
-              {fillSelect(SORTING)}
-            </Select>
-          </SelectGroup>
+            <SelectGroup>
+              <Text>Sorting by</Text>
+              <Select value={sort} onChange={handleChangeSelect(setSort)}>
+                {fillSelect(SORTING)}
+              </Select>
+            </SelectGroup>
+          </Selects>
         </Form>
       </HeaderWrapperInner>
     </HeaderWrapperOuter>
