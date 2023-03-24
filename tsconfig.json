@@ -6,6 +6,8 @@
     "module": "es6",
     "target": "es6",
     "jsx": "react-jsx",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "esModuleInterop": true
   },
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }

@@ -115,15 +115,23 @@ const Header = (): JSX.Element => {
 
           <Selects>
             <SelectGroup>
-              <Text>Categories</Text>
-              <Select value={category} onChange={handleChangeSelect(setCategory)}>
+              <Text as='label' htmlFor='categories'>Categories</Text>
+              <Select
+                id='categories'
+                value={category}
+                onChange={handleChangeSelect(setCategory)}
+              >
                 {fillSelect(CATEGORIES)}
               </Select>
             </SelectGroup>
 
             <SelectGroup>
-              <Text>Sorting by</Text>
-              <Select value={sort} onChange={handleChangeSelect(setSort)}>
+              <Text as='label' htmlFor='sorting-by'>Sorting by</Text>
+              <Select
+                id='sorting-by'
+                value={sort}
+                onChange={handleChangeSelect(setSort)}
+              >
                 {fillSelect(SORTING)}
               </Select>
             </SelectGroup>

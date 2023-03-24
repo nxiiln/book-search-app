@@ -44,7 +44,7 @@ const BookPreview = ({book}: {book: TBook}): JSX.Element => {
 
   return (
     <BookPreviewWrapper onClick={handleClick}>
-      <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM + ZOOM_SMALL} />
+      <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM + ZOOM_SMALL} alt='book' />
 
       <Text fontWeight={700} textAlign='center'>
         {book.volumeInfo.title.substring(0, 73)}
