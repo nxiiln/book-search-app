@@ -122,7 +122,7 @@ const BookDetail = (): JSX.Element => {
 
       {book && loadingStatus === 'ok' &&
         <>
-          <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM + ZOOM_BIG} />
+          <BookImage src={URL_IMG_BASE + book.id + IMG_ZOOM + ZOOM_BIG} alt='book' />
 
           <AboutBook>
             <TextGroup>
